@@ -1,0 +1,30 @@
+{
+  "designerApp": {
+    "fittings": {
+      "home": {
+        "title": "Fittings",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Fittings",
+        "createOrEditLabel": "Créer ou éditer un Fittings",
+        "notFound": "Aucun Fittings trouvé"
+      },
+      "created": "Un nouveau Fittings a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Fittings avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Fittings avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Fittings {{ id }} ?"
+      },
+      "detail": {
+        "title": "Fittings"
+      },
+      "id": "ID",
+      "fitting": "Fitting",
+      "fShipId": "F Ship Id",
+      "count": "Count",
+      "mass": "Mass",
+      "cost": "Cost",
+      "armored": "Armored",
+      "ships": "Ships"
+    }
+  }
+}

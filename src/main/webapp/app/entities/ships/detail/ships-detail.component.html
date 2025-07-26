@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (ships(); as shipsRef) {
+      <div>
+        <h2 data-cy="shipsDetailsHeading"><span jhiTranslate="designerApp.ships.detail.title">Ships</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ shipsRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.shipId">Ship Id</span></dt>
+          <dd>
+            <span>{{ shipsRef.shipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.userId">User Id</span></dt>
+          <dd>
+            <span>{{ shipsRef.userId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.tl">Tl</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.TL.' + (shipsRef.tl ?? 'null')">{{
+              { null: '', A: 'A', B: 'B', C: 'C', D: 'D', E: 'E', F: 'F', G: 'G', H: 'H', I: 'I', J: 'J', K: 'K', L: 'L' }[
+                shipsRef.tl ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.tonnage">Tonnage</span></dt>
+          <dd>
+            <span>{{ shipsRef.tonnage }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.conf">Conf</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Config.' + (shipsRef.conf ?? 'null')">{{
+              {
+                null: '',
+                Needle: 'Needle',
+                Wedge: 'Wedge',
+                Cone: 'Cone',
+                Standard: 'Standard',
+                Cylinder: 'Cylinder',
+                Close: 'Close',
+                Structure: 'Structure',
+                Sphere: 'Sphere',
+                Dispersed: 'Dispersed',
+                Planetoid: 'Planetoid',
+                Buffered: 'Buffered',
+                Box: 'Box',
+              }[shipsRef.conf ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.code">Code</span></dt>
+          <dd>
+            <span>{{ shipsRef.code }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.hull">Hull</span></dt>
+          <dd>
+            <span>{{ shipsRef.hull }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.structure">Structure</span></dt>
+          <dd>
+            <span>{{ shipsRef.structure }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.sections">Sections</span></dt>
+          <dd>
+            <span>{{ shipsRef.sections }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.capital">Capital</span></dt>
+          <dd>
+            <span>{{ shipsRef.capital }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.military">Military</span></dt>
+          <dd>
+            <span>{{ shipsRef.military }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.ships.user">User</span></dt>
+          <dd>
+            <span>{{ shipsRef.user?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/ships', shipsRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

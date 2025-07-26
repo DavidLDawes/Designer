@@ -1,0 +1,29 @@
+{
+  "designerApp": {
+    "engines": {
+      "home": {
+        "title": "Engines",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Engines",
+        "createOrEditLabel": "Créer ou éditer un Engines",
+        "notFound": "Aucun Engines trouvé"
+      },
+      "created": "Un nouveau Engines a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Engines avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Engines avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Engines {{ id }} ?"
+      },
+      "detail": {
+        "title": "Engines"
+      },
+      "id": "ID",
+      "eShipId": "E Ship Id",
+      "engine": "Engine",
+      "mass": "Mass",
+      "cost": "Cost",
+      "tl": "Tl",
+      "ships": "Ships"
+    }
+  }
+}

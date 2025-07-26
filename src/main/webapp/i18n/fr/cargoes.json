@@ -1,0 +1,29 @@
+{
+  "designerApp": {
+    "cargoes": {
+      "home": {
+        "title": "Cargoes",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Cargoes",
+        "createOrEditLabel": "Créer ou éditer un Cargoes",
+        "notFound": "Aucun Cargoes trouvé"
+      },
+      "created": "Un nouveau Cargoes a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Cargoes avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Cargoes avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Cargoes {{ id }} ?"
+      },
+      "detail": {
+        "title": "Cargoes"
+      },
+      "id": "ID",
+      "cargo": "Cargo",
+      "cShipId": "C Ship Id",
+      "mass": "Mass",
+      "cost": "Cost",
+      "armored": "Armored",
+      "ships": "Ships"
+    }
+  }
+}

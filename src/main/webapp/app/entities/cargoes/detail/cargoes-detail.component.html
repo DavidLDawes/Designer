@@ -1,0 +1,73 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cargoes(); as cargoesRef) {
+      <div>
+        <h2 data-cy="cargoesDetailsHeading"><span jhiTranslate="designerApp.cargoes.detail.title">Cargoes</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cargoesRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.cargo">Cargo</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Cargo.' + (cargoesRef.cargo ?? 'null')">{{
+              {
+                null: '',
+                Cargo: 'Cargo',
+                Bay: 'Bay',
+                Spares: 'Spares',
+                Cold: 'Cold',
+                Storage: 'Storage',
+                Data: 'Data',
+                Secure: 'Secure',
+                Vacuum: 'Vacuum',
+                Livestock: 'Livestock',
+                Live: 'Live',
+                Plant: 'Plant',
+              }[cargoesRef.cargo ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.cShipId">C Ship Id</span></dt>
+          <dd>
+            <span>{{ cargoesRef.cShipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.mass">Mass</span></dt>
+          <dd>
+            <span>{{ cargoesRef.mass }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.cost">Cost</span></dt>
+          <dd>
+            <span>{{ cargoesRef.cost }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.armored">Armored</span></dt>
+          <dd>
+            <span>{{ cargoesRef.armored }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.cargoes.ships">Ships</span></dt>
+          <dd>
+            @if (cargoes()!.ships) {
+              <div>
+                <a [routerLink]="['/ships', cargoes()!.ships?.id, 'view']">{{ cargoesRef.ships?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cargoes', cargoesRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

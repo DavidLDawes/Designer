@@ -1,0 +1,11 @@
+{
+  "designerApp": {
+    "Engine": {
+      "null": "",
+      "Jump": "Jump",
+      "Spare": "Spare",
+      "Maneuver": "Maneuver",
+      "Power": "Power"
+    }
+  }
+}

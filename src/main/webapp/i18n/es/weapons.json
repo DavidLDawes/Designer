@@ -1,0 +1,31 @@
+{
+  "designerApp": {
+    "weapons": {
+      "home": {
+        "title": "Weapons",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Weapons",
+        "createOrEditLabel": "Crear o editar Weapons",
+        "notFound": "Ningún Weapons encontrado"
+      },
+      "created": "Un nuevo Weapons ha sido creado con el identificador {{ param }}",
+      "updated": "Un Weapons ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Weapons ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Weapons {{ id }}?"
+      },
+      "detail": {
+        "title": "Weapons"
+      },
+      "id": "ID",
+      "weapon": "Weapon",
+      "wShipId": "W Ship Id",
+      "battery": "Battery",
+      "count": "Count",
+      "mass": "Mass",
+      "cost": "Cost",
+      "armored": "Armored",
+      "ships": "Ships"
+    }
+  }
+}

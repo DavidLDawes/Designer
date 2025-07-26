@@ -1,0 +1,11 @@
+id;ship_id;user_id;tl;tonnage;conf;code;hull;structure;sections;capital;military
+1;26521;10812;G;16872;Dispersed;once fleck;12506;20633;22330;true;false
+2;25644;23568;C;2161;Close;unlike;19611;29765;22138;true;false
+3;6515;10853;I;628;Close;self-assured eminent;23150;27941;24087;true;false
+4;11617;3148;J;12682;Planetoid;glimmer inwardly questionable;13300;8937;9892;false;false
+5;16563;22199;C;25039;Standard;always nor;15746;32437;28200;true;false
+6;30532;32327;F;13581;Cone;mediocre fatal apropos;9860;9337;4032;false;false
+7;18391;15764;D;21955;Sphere;hourly;13469;19028;18755;true;true
+8;22160;18517;I;16732;Close;beautifully;4216;20494;9711;false;true
+9;17646;31557;A;3667;Close;sailor drat;28395;3251;965;false;false
+10;27736;27790;F;9688;Sphere;trial even suddenly;1767;25581;31217;false;false

@@ -1,0 +1,205 @@
+enum Config {
+ Needle Wedge
+ Cone
+ Standard Cylinder
+ Close Structure
+ Sphere
+ Dispersed Structure
+ Planetoid
+ Buffered Planetoid
+ Box
+}
+
+
+enum TL {
+ A
+ B
+ C
+ D
+ E
+ F
+ G
+ H
+ I
+ J
+ K
+ L
+}
+
+
+enum Weapon {
+ Pulse Laser Turret
+ Dual Pulse Laser Turret
+ Triple Pulse Laser Turret
+ Beam Laser Turret
+ Dual Beam Laser Turret
+ Triple Beam Laser Turret
+ Plasma Beam Barbette
+ Dual Plasma Beam Barbette
+ Fusion Gun Barbette
+ SingleDual Fusion Gun Barbette
+ Particle Beam Barbette
+ Missile Launcher Turret
+ Dual Missile Launcher Turret
+ Triple Missile Launcher Turret
+ Spinal Mount Meson Gun
+ Spinal Mount Particle Beam
+ Hard Point
+}
+
+
+enum Defense {
+ Armor
+ Nuclear Shield
+ Meson Shield
+ Ablative Coating
+ Stealth
+ Point Defense Laser
+ Sand Caster Turret
+ Dual Sand Caster Turret
+ Triple Sand Caster Turret
+}
+
+
+enum Cargo {
+ Cargo Bay
+ Spares
+ Cold Storage Bay
+ Data Storage Bay
+ Secure Storage Bay
+ Vacuum Bay
+ Livestock Bay
+ Live Plant Bay
+}
+
+
+enum Vehicle {
+ Air Raft
+ ATV
+ G Sled
+ G Car
+ Ships Boat
+ Modular Cutter
+ Shuttle
+ Light Fighter
+ Medium Fighter
+ Heavy Fighter
+ Light Tank
+ Medium Tank
+ Heavy Tank
+ Light G Tank
+ Medium G Tank
+ Heavy G Tank
+ APC
+ GAPC
+}
+
+
+entity Ships {
+  shipId Integer required
+  userId Integer required
+  tl TL required
+  tonnage Integer required
+  conf Config required
+  code String required
+  hull Integer required
+  structure Integer required
+  sections Integer required
+  capital Boolean required
+  military Boolean required
+}
+
+
+enum Fitting {
+ Bridge
+ Comms
+ Advanced Comms
+ Military Comms
+ Sensors
+ Advanced Sensors
+ Military Sensors
+ Computer
+ Launch Tubes
+}
+
+
+entity Fittings {
+ fitting Fitting required
+ fShipId Integer required
+ count Integer required
+ mass Float required
+ cost Float required
+ armored Boolean required
+}
+
+
+entity Weapons {
+ weapon Weapon required
+ wShipId Integer required
+ battery Integer required
+ count Integer required
+ mass Float required
+ cost Float required
+ armored Boolean required
+}
+
+
+entity Defenses {
+defense Defense required
+  dShipId Integer required
+  battery Integer required
+  count Integer required
+  mass Float required
+  cost Float required
+  armored Boolean required
+}
+
+
+entity Cargoes {
+  cargo Cargo required
+  cShipId Integer required
+  mass Float required
+  cost Float required
+  armored Boolean required
+}
+
+
+entity Vehicles {
+  vehicle Vehicle required
+  vShipId Integer required
+  mass Float required
+  cost Float required
+  armored Boolean required
+  repairBay Boolean required
+}
+
+
+enum Engine {
+    Jump
+    Spare Jump
+    Maneuver
+    Spare Maneuver
+    Power
+    Spare Power
+}
+
+
+entity Engines {
+    eShipId Integer required
+    engine Engine required
+    mass Float required
+    cost Float required
+    tl TL required
+}
+
+
+relationship ManyToOne {
+    Ships{user(login)} to User with builtInEntity
+    Fittings{Ships} to Ships{Fittings}
+    Weapons{Ships} to Ships{Weapons}
+    Defenses{Ships} to Ships{Defenses}
+    Cargoes{Ships} to Ships{Cargoes}
+    Vehicles{Ships} to Ships{Vehicles}
+    Engines{Ships} to Ships{Engines}
+}
+

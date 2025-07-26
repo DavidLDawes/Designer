@@ -1,0 +1,26 @@
+{
+  "designerApp": {
+    "Weapon": {
+      "null": "",
+      "Pulse": "Pulse",
+      "Laser": "Laser",
+      "Turret": "Turret",
+      "Dual": "Dual",
+      "Triple": "Triple",
+      "Beam": "Beam",
+      "Plasma": "Plasma",
+      "Barbette": "Barbette",
+      "Fusion": "Fusion",
+      "Gun": "Gun",
+      "SingleDual": "SingleDual",
+      "Particle": "Particle",
+      "Missile": "Missile",
+      "Launcher": "Launcher",
+      "Spinal": "Spinal",
+      "Mount": "Mount",
+      "Meson": "Meson",
+      "Hard": "Hard",
+      "Point": "Point"
+    }
+  }
+}

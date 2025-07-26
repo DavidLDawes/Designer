@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (engines(); as enginesRef) {
+      <div>
+        <h2 data-cy="enginesDetailsHeading"><span jhiTranslate="designerApp.engines.detail.title">Engines</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ enginesRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.eShipId">E Ship Id</span></dt>
+          <dd>
+            <span>{{ enginesRef.eShipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.engine">Engine</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Engine.' + (enginesRef.engine ?? 'null')">{{
+              { null: '', Jump: 'Jump', Spare: 'Spare', Maneuver: 'Maneuver', Power: 'Power' }[enginesRef.engine ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.mass">Mass</span></dt>
+          <dd>
+            <span>{{ enginesRef.mass }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.cost">Cost</span></dt>
+          <dd>
+            <span>{{ enginesRef.cost }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.tl">Tl</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.TL.' + (enginesRef.tl ?? 'null')">{{
+              { null: '', A: 'A', B: 'B', C: 'C', D: 'D', E: 'E', F: 'F', G: 'G', H: 'H', I: 'I', J: 'J', K: 'K', L: 'L' }[
+                enginesRef.tl ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.engines.ships">Ships</span></dt>
+          <dd>
+            @if (engines()!.ships) {
+              <div>
+                <a [routerLink]="['/ships', engines()!.ships?.id, 'view']">{{ enginesRef.ships?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/engines', enginesRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

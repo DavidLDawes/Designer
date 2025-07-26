@@ -1,0 +1,128 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cargoes-heading" data-cy="CargoesCreateUpdateHeading" jhiTranslate="designerApp.cargoes.home.createOrEditLabel">
+        Create or edit a Cargoes
+      </h2>
+
+      <div>
+        <jhi-alert-error />
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="designerApp.cargoes.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        @let cargoRef = editForm.get('cargo')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_cargo" jhiTranslate="designerApp.cargoes.cargo">Cargo</label>
+          <select class="form-control" name="cargo" formControlName="cargo" id="field_cargo" data-cy="cargo">
+            <option [ngValue]="null">{{ 'designerApp.Cargo.null' | translate }}</option>
+            @for (cargo of cargoValues; track $index) {
+              <option [value]="cargo">{{ 'designerApp.Cargo.' + cargo | translate }}</option>
+            }
+          </select>
+          @if (cargoRef.invalid && (cargoRef.dirty || cargoRef.touched)) {
+            <div>
+              @if (editForm.get('cargo')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        @let cShipIdRef = editForm.get('cShipId')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_cShipId" jhiTranslate="designerApp.cargoes.cShipId">C Ship Id</label>
+          <input type="number" class="form-control" name="cShipId" id="field_cShipId" data-cy="cShipId" formControlName="cShipId" />
+          @if (cShipIdRef.invalid && (cShipIdRef.dirty || cShipIdRef.touched)) {
+            <div>
+              @if (editForm.get('cShipId')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('cShipId')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let massRef = editForm.get('mass')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_mass" jhiTranslate="designerApp.cargoes.mass">Mass</label>
+          <input type="number" class="form-control" name="mass" id="field_mass" data-cy="mass" formControlName="mass" />
+          @if (massRef.invalid && (massRef.dirty || massRef.touched)) {
+            <div>
+              @if (editForm.get('mass')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('mass')?.errors?.number" jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let costRef = editForm.get('cost')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_cost" jhiTranslate="designerApp.cargoes.cost">Cost</label>
+          <input type="number" class="form-control" name="cost" id="field_cost" data-cy="cost" formControlName="cost" />
+          @if (costRef.invalid && (costRef.dirty || costRef.touched)) {
+            <div>
+              @if (editForm.get('cost')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small class="form-text text-danger" [hidden]="!editForm.get('cost')?.errors?.number" jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        @let armoredRef = editForm.get('armored')!;
+        <div class="mb-3">
+          <label class="form-label" for="field_armored" jhiTranslate="designerApp.cargoes.armored">Armored</label>
+          <input type="checkbox" class="form-check" name="armored" id="field_armored" data-cy="armored" formControlName="armored" />
+          @if (armoredRef.invalid && (armoredRef.dirty || armoredRef.touched)) {
+            <div>
+              @if (editForm.get('armored')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_ships" jhiTranslate="designerApp.cargoes.ships">Ships</label>
+          <select class="form-control" id="field_ships" data-cy="ships" name="ships" formControlName="ships" [compareWith]="compareShips">
+            <option [ngValue]="null"></option>
+            @for (shipsOption of shipsSharedCollection; track $index) {
+              <option [ngValue]="shipsOption">{{ shipsOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

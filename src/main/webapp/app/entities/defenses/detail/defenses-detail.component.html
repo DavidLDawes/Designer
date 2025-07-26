@@ -1,0 +1,85 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (defenses(); as defensesRef) {
+      <div>
+        <h2 data-cy="defensesDetailsHeading"><span jhiTranslate="designerApp.defenses.detail.title">Defenses</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ defensesRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.defense">Defense</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Defense.' + (defensesRef.defense ?? 'null')">{{
+              {
+                null: '',
+                Armor: 'Armor',
+                Nuclear: 'Nuclear',
+                Shield: 'Shield',
+                Meson: 'Meson',
+                Ablative: 'Ablative',
+                Coating: 'Coating',
+                Stealth: 'Stealth',
+                Point: 'Point',
+                Defense: 'Defense',
+                Laser: 'Laser',
+                Sand: 'Sand',
+                Caster: 'Caster',
+                Turret: 'Turret',
+                Dual: 'Dual',
+                Triple: 'Triple',
+              }[defensesRef.defense ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.dShipId">D Ship Id</span></dt>
+          <dd>
+            <span>{{ defensesRef.dShipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.battery">Battery</span></dt>
+          <dd>
+            <span>{{ defensesRef.battery }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.count">Count</span></dt>
+          <dd>
+            <span>{{ defensesRef.count }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.mass">Mass</span></dt>
+          <dd>
+            <span>{{ defensesRef.mass }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.cost">Cost</span></dt>
+          <dd>
+            <span>{{ defensesRef.cost }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.armored">Armored</span></dt>
+          <dd>
+            <span>{{ defensesRef.armored }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.defenses.ships">Ships</span></dt>
+          <dd>
+            @if (defenses()!.ships) {
+              <div>
+                <a [routerLink]="['/ships', defenses()!.ships?.id, 'view']">{{ defensesRef.ships?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/defenses', defensesRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

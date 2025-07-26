@@ -1,0 +1,31 @@
+export enum Defense {
+  Armor = 'Armor',
+
+  Nuclear = 'Nuclear',
+
+  Shield = 'Shield',
+
+  Meson = 'Meson',
+
+  Ablative = 'Ablative',
+
+  Coating = 'Coating',
+
+  Stealth = 'Stealth',
+
+  Point = 'Point',
+
+  Defense = 'Defense',
+
+  Laser = 'Laser',
+
+  Sand = 'Sand',
+
+  Caster = 'Caster',
+
+  Turret = 'Turret',
+
+  Dual = 'Dual',
+
+  Triple = 'Triple',
+}

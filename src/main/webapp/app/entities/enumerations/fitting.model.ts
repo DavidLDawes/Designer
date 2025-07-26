@@ -1,0 +1,17 @@
+export enum Fitting {
+  Bridge = 'Bridge',
+
+  Comms = 'Comms',
+
+  Advanced = 'Advanced',
+
+  Military = 'Military',
+
+  Sensors = 'Sensors',
+
+  Computer = 'Computer',
+
+  Launch = 'Launch',
+
+  Tubes = 'Tubes',
+}

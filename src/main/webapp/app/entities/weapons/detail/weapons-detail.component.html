@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (weapons(); as weaponsRef) {
+      <div>
+        <h2 data-cy="weaponsDetailsHeading"><span jhiTranslate="designerApp.weapons.detail.title">Weapons</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ weaponsRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.weapon">Weapon</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Weapon.' + (weaponsRef.weapon ?? 'null')">{{
+              {
+                null: '',
+                Pulse: 'Pulse',
+                Laser: 'Laser',
+                Turret: 'Turret',
+                Dual: 'Dual',
+                Triple: 'Triple',
+                Beam: 'Beam',
+                Plasma: 'Plasma',
+                Barbette: 'Barbette',
+                Fusion: 'Fusion',
+                Gun: 'Gun',
+                SingleDual: 'SingleDual',
+                Particle: 'Particle',
+                Missile: 'Missile',
+                Launcher: 'Launcher',
+                Spinal: 'Spinal',
+                Mount: 'Mount',
+                Meson: 'Meson',
+                Hard: 'Hard',
+                Point: 'Point',
+              }[weaponsRef.weapon ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.wShipId">W Ship Id</span></dt>
+          <dd>
+            <span>{{ weaponsRef.wShipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.battery">Battery</span></dt>
+          <dd>
+            <span>{{ weaponsRef.battery }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.count">Count</span></dt>
+          <dd>
+            <span>{{ weaponsRef.count }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.mass">Mass</span></dt>
+          <dd>
+            <span>{{ weaponsRef.mass }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.cost">Cost</span></dt>
+          <dd>
+            <span>{{ weaponsRef.cost }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.armored">Armored</span></dt>
+          <dd>
+            <span>{{ weaponsRef.armored }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.weapons.ships">Ships</span></dt>
+          <dd>
+            @if (weapons()!.ships) {
+              <div>
+                <a [routerLink]="['/ships', weapons()!.ships?.id, 'view']">{{ weaponsRef.ships?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/weapons', weaponsRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

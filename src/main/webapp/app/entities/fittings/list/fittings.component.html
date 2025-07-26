@@ -1,0 +1,151 @@
+<div>
+  <h2 id="page-heading" data-cy="FittingsHeading">
+    <span jhiTranslate="designerApp.fittings.home.title">Fittings</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="designerApp.fittings.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-fittings"
+        [routerLink]="['/fittings/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="designerApp.fittings.home.createLabel">Create a new Fittings</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (fittings().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="designerApp.fittings.home.notFound">No Fittings found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fitting">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.fitting">Fitting</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fShipId">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.fShipId">F Ship Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="count">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.count">Count</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mass">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.mass">Mass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cost">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.cost">Cost</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="armored">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.armored">Armored</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ships.id">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.fittings.ships">Ships</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (fittings of fittings(); track trackId(fittings)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/fittings', fittings.id, 'view']">{{ fittings.id }}</a>
+              </td>
+              <td [jhiTranslate]="'designerApp.Fitting.' + (fittings.fitting ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Bridge: 'Bridge',
+                    Comms: 'Comms',
+                    Advanced: 'Advanced',
+                    Military: 'Military',
+                    Sensors: 'Sensors',
+                    Computer: 'Computer',
+                    Launch: 'Launch',
+                    Tubes: 'Tubes',
+                  }[fittings.fitting ?? 'null']
+                }}
+              </td>
+              <td>{{ fittings.fShipId }}</td>
+              <td>{{ fittings.count }}</td>
+              <td>{{ fittings.mass }}</td>
+              <td>{{ fittings.cost }}</td>
+              <td>{{ fittings.armored }}</td>
+              <td>
+                @if (fittings.ships) {
+                  <div>
+                    <a [routerLink]="['/ships', fittings.ships.id, 'view']">{{ fittings.ships.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/fittings', fittings.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/fittings', fittings.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(fittings)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

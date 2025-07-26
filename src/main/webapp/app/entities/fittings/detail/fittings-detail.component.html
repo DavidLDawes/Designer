@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (fittings(); as fittingsRef) {
+      <div>
+        <h2 data-cy="fittingsDetailsHeading"><span jhiTranslate="designerApp.fittings.detail.title">Fittings</span></h2>
+
+        <hr />
+
+        <jhi-alert-error />
+
+        <jhi-alert />
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ fittingsRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.fitting">Fitting</span></dt>
+          <dd>
+            <span [jhiTranslate]="'designerApp.Fitting.' + (fittingsRef.fitting ?? 'null')">{{
+              {
+                null: '',
+                Bridge: 'Bridge',
+                Comms: 'Comms',
+                Advanced: 'Advanced',
+                Military: 'Military',
+                Sensors: 'Sensors',
+                Computer: 'Computer',
+                Launch: 'Launch',
+                Tubes: 'Tubes',
+              }[fittingsRef.fitting ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.fShipId">F Ship Id</span></dt>
+          <dd>
+            <span>{{ fittingsRef.fShipId }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.count">Count</span></dt>
+          <dd>
+            <span>{{ fittingsRef.count }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.mass">Mass</span></dt>
+          <dd>
+            <span>{{ fittingsRef.mass }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.cost">Cost</span></dt>
+          <dd>
+            <span>{{ fittingsRef.cost }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.armored">Armored</span></dt>
+          <dd>
+            <span>{{ fittingsRef.armored }}</span>
+          </dd>
+          <dt><span jhiTranslate="designerApp.fittings.ships">Ships</span></dt>
+          <dd>
+            @if (fittings()!.ships) {
+              <div>
+                <a [routerLink]="['/ships', fittings()!.ships?.id, 'view']">{{ fittingsRef.ships?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/fittings', fittingsRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "designerApp": {
+    "vehicles": {
+      "home": {
+        "title": "Vehicles",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Vehicles",
+        "createOrEditLabel": "Crear o editar Vehicles",
+        "notFound": "Ningún Vehicles encontrado"
+      },
+      "created": "Un nuevo Vehicles ha sido creado con el identificador {{ param }}",
+      "updated": "Un Vehicles ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Vehicles ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Vehicles {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicles"
+      },
+      "id": "ID",
+      "vehicle": "Vehicle",
+      "vShipId": "V Ship Id",
+      "mass": "Mass",
+      "cost": "Cost",
+      "armored": "Armored",
+      "repairBay": "Repair Bay",
+      "ships": "Ships"
+    }
+  }
+}

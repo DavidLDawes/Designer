@@ -1,0 +1,11 @@
+id;vehicle;v_ship_id;mass;cost;armored;repair_bay
+1;Ships;20862;26519.83;3760.73;false;false
+2;APC;4087;14168.65;13405.39;true;true
+3;Medium;4876;17444.15;32129.48;false;false
+4;ATV;28081;23044.18;11149.13;false;false
+5;Air;642;32318.73;9292.13;true;true
+6;Heavy;3863;25911.5;16018.15;false;false
+7;Car;27697;13699.28;22529.36;false;false
+8;APC;22831;27637.84;24193.16;true;false
+9;Car;918;9889.43;20278.98;false;true
+10;Tank;17384;20496.07;28588.77;true;false

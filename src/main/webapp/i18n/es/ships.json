@@ -1,0 +1,41 @@
+{
+  "designerApp": {
+    "ships": {
+      "home": {
+        "title": "Ships",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Ships",
+        "createOrEditLabel": "Crear o editar Ships",
+        "notFound": "Ningún Ships encontrado"
+      },
+      "created": "Un nuevo Ships ha sido creado con el identificador {{ param }}",
+      "updated": "Un Ships ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Ships ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Ships {{ id }}?"
+      },
+      "detail": {
+        "title": "Ships"
+      },
+      "id": "ID",
+      "shipId": "Ship Id",
+      "userId": "User Id",
+      "tl": "Tl",
+      "tonnage": "Tonnage",
+      "conf": "Conf",
+      "code": "Code",
+      "hull": "Hull",
+      "structure": "Structure",
+      "sections": "Sections",
+      "capital": "Capital",
+      "military": "Military",
+      "user": "User",
+      "fittings": "Fittings",
+      "weapons": "Weapons",
+      "defenses": "Defenses",
+      "cargoes": "Cargoes",
+      "vehicles": "Vehicles",
+      "engines": "Engines"
+    }
+  }
+}

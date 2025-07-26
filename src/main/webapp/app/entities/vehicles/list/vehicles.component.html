@@ -1,0 +1,161 @@
+<div>
+  <h2 id="page-heading" data-cy="VehiclesHeading">
+    <span jhiTranslate="designerApp.vehicles.home.title">Vehicles</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="designerApp.vehicles.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicles"
+        [routerLink]="['/vehicles/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="designerApp.vehicles.home.createLabel">Create a new Vehicles</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (vehicles().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="designerApp.vehicles.home.notFound">No Vehicles found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vehicle">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.vehicle">Vehicle</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vShipId">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.vShipId">V Ship Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mass">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.mass">Mass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cost">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.cost">Cost</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="armored">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.armored">Armored</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="repairBay">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.repairBay">Repair Bay</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ships.id">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.vehicles.ships">Ships</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vehicles of vehicles(); track trackId(vehicles)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/vehicles', vehicles.id, 'view']">{{ vehicles.id }}</a>
+              </td>
+              <td [jhiTranslate]="'designerApp.Vehicle.' + (vehicles.vehicle ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Air: 'Air',
+                    Raft: 'Raft',
+                    ATV: 'ATV',
+                    G: 'G',
+                    Sled: 'Sled',
+                    Car: 'Car',
+                    Ships: 'Ships',
+                    Boat: 'Boat',
+                    Modular: 'Modular',
+                    Cutter: 'Cutter',
+                    Shuttle: 'Shuttle',
+                    Light: 'Light',
+                    Fighter: 'Fighter',
+                    Medium: 'Medium',
+                    Heavy: 'Heavy',
+                    Tank: 'Tank',
+                    APC: 'APC',
+                    GAPC: 'GAPC',
+                  }[vehicles.vehicle ?? 'null']
+                }}
+              </td>
+              <td>{{ vehicles.vShipId }}</td>
+              <td>{{ vehicles.mass }}</td>
+              <td>{{ vehicles.cost }}</td>
+              <td>{{ vehicles.armored }}</td>
+              <td>{{ vehicles.repairBay }}</td>
+              <td>
+                @if (vehicles.ships) {
+                  <div>
+                    <a [routerLink]="['/ships', vehicles.ships.id, 'view']">{{ vehicles.ships.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/vehicles', vehicles.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/vehicles', vehicles.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(vehicles)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

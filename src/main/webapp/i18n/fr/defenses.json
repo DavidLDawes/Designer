@@ -1,0 +1,31 @@
+{
+  "designerApp": {
+    "defenses": {
+      "home": {
+        "title": "Defenses",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Defenses",
+        "createOrEditLabel": "Créer ou éditer un Defenses",
+        "notFound": "Aucun Defenses trouvé"
+      },
+      "created": "Un nouveau Defenses a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Defenses avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Defenses avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Defenses {{ id }} ?"
+      },
+      "detail": {
+        "title": "Defenses"
+      },
+      "id": "ID",
+      "defense": "Defense",
+      "dShipId": "D Ship Id",
+      "battery": "Battery",
+      "count": "Count",
+      "mass": "Mass",
+      "cost": "Cost",
+      "armored": "Armored",
+      "ships": "Ships"
+    }
+  }
+}

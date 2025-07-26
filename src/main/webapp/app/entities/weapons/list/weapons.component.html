@@ -1,0 +1,170 @@
+<div>
+  <h2 id="page-heading" data-cy="WeaponsHeading">
+    <span jhiTranslate="designerApp.weapons.home.title">Weapons</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="designerApp.weapons.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-weapons"
+        [routerLink]="['/weapons/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="designerApp.weapons.home.createLabel">Create a new Weapons</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (weapons().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="designerApp.weapons.home.notFound">No Weapons found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="weapon">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.weapon">Weapon</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="wShipId">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.wShipId">W Ship Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="battery">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.battery">Battery</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="count">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.count">Count</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mass">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.mass">Mass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cost">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.cost">Cost</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="armored">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.armored">Armored</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ships.id">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.weapons.ships">Ships</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (weapons of weapons(); track trackId(weapons)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/weapons', weapons.id, 'view']">{{ weapons.id }}</a>
+              </td>
+              <td [jhiTranslate]="'designerApp.Weapon.' + (weapons.weapon ?? 'null')">
+                {{
+                  {
+                    null: '',
+                    Pulse: 'Pulse',
+                    Laser: 'Laser',
+                    Turret: 'Turret',
+                    Dual: 'Dual',
+                    Triple: 'Triple',
+                    Beam: 'Beam',
+                    Plasma: 'Plasma',
+                    Barbette: 'Barbette',
+                    Fusion: 'Fusion',
+                    Gun: 'Gun',
+                    SingleDual: 'SingleDual',
+                    Particle: 'Particle',
+                    Missile: 'Missile',
+                    Launcher: 'Launcher',
+                    Spinal: 'Spinal',
+                    Mount: 'Mount',
+                    Meson: 'Meson',
+                    Hard: 'Hard',
+                    Point: 'Point',
+                  }[weapons.weapon ?? 'null']
+                }}
+              </td>
+              <td>{{ weapons.wShipId }}</td>
+              <td>{{ weapons.battery }}</td>
+              <td>{{ weapons.count }}</td>
+              <td>{{ weapons.mass }}</td>
+              <td>{{ weapons.cost }}</td>
+              <td>{{ weapons.armored }}</td>
+              <td>
+                @if (weapons.ships) {
+                  <div>
+                    <a [routerLink]="['/ships', weapons.ships.id, 'view']">{{ weapons.ships.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/weapons', weapons.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/weapons', weapons.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(weapons)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

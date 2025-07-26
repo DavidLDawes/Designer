@@ -1,0 +1,137 @@
+<div>
+  <h2 id="page-heading" data-cy="EnginesHeading">
+    <span jhiTranslate="designerApp.engines.home.title">Engines</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="designerApp.engines.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-engines"
+        [routerLink]="['/engines/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="designerApp.engines.home.createLabel">Create a new Engines</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error />
+
+  <jhi-alert />
+
+  @if (engines().length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="designerApp.engines.home.notFound">No Engines found</span>
+    </div>
+  } @else {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [(sortState)]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="eShipId">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.eShipId">E Ship Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="engine">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.engine">Engine</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="mass">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.mass">Mass</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="cost">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.cost">Cost</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="tl">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.tl">Tl</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ships.id">
+              <div class="d-flex">
+                <span jhiTranslate="designerApp.engines.ships">Ships</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (engines of engines(); track trackId(engines)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/engines', engines.id, 'view']">{{ engines.id }}</a>
+              </td>
+              <td>{{ engines.eShipId }}</td>
+              <td [jhiTranslate]="'designerApp.Engine.' + (engines.engine ?? 'null')">
+                {{ { null: '', Jump: 'Jump', Spare: 'Spare', Maneuver: 'Maneuver', Power: 'Power' }[engines.engine ?? 'null'] }}
+              </td>
+              <td>{{ engines.mass }}</td>
+              <td>{{ engines.cost }}</td>
+              <td [jhiTranslate]="'designerApp.TL.' + (engines.tl ?? 'null')">
+                {{
+                  { null: '', A: 'A', B: 'B', C: 'C', D: 'D', E: 'E', F: 'F', G: 'G', H: 'H', I: 'I', J: 'J', K: 'K', L: 'L' }[
+                    engines.tl ?? 'null'
+                  ]
+                }}
+              </td>
+              <td>
+                @if (engines.ships) {
+                  <div>
+                    <a [routerLink]="['/ships', engines.ships.id, 'view']">{{ engines.ships.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/engines', engines.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/engines', engines.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(engines)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>
