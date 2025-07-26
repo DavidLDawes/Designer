@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022541"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "defense",
+      "fieldType": "Defense",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Armor,Nuclear,Shield,Meson,Ablative,Coating,Stealth,Point,Defense,Laser,Sand,Caster,Turret,Dual,Triple"
+    },
+    {
+      "fieldName": "dShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "battery",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "count",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "armored",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Defenses",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "defenses",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

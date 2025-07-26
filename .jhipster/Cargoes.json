@@ -1,0 +1,45 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022542"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "cargo",
+      "fieldType": "Cargo",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Cargo,Bay,Spares,Cold,Storage,Data,Secure,Vacuum,Livestock,Live,Plant"
+    },
+    {
+      "fieldName": "cShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "armored",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Cargoes",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "cargoes",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

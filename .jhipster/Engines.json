@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022544"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "eShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "engine",
+      "fieldType": "Engine",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Jump,Spare,Maneuver,Power"
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tl",
+      "fieldType": "TL",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "A,B,C,D,E,F,G,H,I,J,K,L"
+    }
+  ],
+  "name": "Engines",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "engines",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

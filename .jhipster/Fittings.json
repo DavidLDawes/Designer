@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022539"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "fitting",
+      "fieldType": "Fitting",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Bridge,Comms,Advanced,Military,Sensors,Computer,Launch,Tubes"
+    },
+    {
+      "fieldName": "fShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "count",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "armored",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Fittings",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "fittings",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

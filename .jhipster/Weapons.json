@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022540"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "weapon",
+      "fieldType": "Weapon",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Pulse,Laser,Turret,Dual,Triple,Beam,Plasma,Barbette,Fusion,Gun,SingleDual,Particle,Missile,Launcher,Spinal,Mount,Meson,Hard,Point"
+    },
+    {
+      "fieldName": "wShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "battery",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "count",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "armored",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Weapons",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "weapons",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,119 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022538"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "shipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "userId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "tl",
+      "fieldType": "TL",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "A,B,C,D,E,F,G,H,I,J,K,L"
+    },
+    {
+      "fieldName": "tonnage",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "conf",
+      "fieldType": "Config",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Needle,Wedge,Cone,Standard,Cylinder,Close,Structure,Sphere,Dispersed,Planetoid,Buffered,Box"
+    },
+    {
+      "fieldName": "code",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "hull",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "structure",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "sections",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "capital",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "military",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Ships",
+  "relationships": [
+    {
+      "otherEntityField": "login",
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipWithBuiltInEntity": true
+    },
+    {
+      "otherEntityName": "fittings",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "fittings",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "weapons",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "weapons",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "defenses",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "defenses",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "cargoes",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "cargoes",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "vehicles",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "vehicles",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "engines",
+      "otherEntityRelationshipName": "ships",
+      "relationshipName": "engines",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

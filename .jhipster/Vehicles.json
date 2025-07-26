@@ -1,0 +1,50 @@
+{
+  "annotations": {
+    "changelogDate": "20250726022543"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "vehicle",
+      "fieldType": "Vehicle",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "Air,Raft,ATV,G,Sled,Car,Ships,Boat,Modular,Cutter,Shuttle,Light,Fighter,Medium,Heavy,Tank,APC,GAPC"
+    },
+    {
+      "fieldName": "vShipId",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "mass",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "cost",
+      "fieldType": "Float",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "armored",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "repairBay",
+      "fieldType": "Boolean",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Vehicles",
+  "relationships": [
+    {
+      "otherEntityName": "ships",
+      "otherEntityRelationshipName": "vehicles",
+      "relationshipName": "ships",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}
