@@ -20,6 +20,9 @@ spring:
   config:
     activate:
       on-profile: '!api-docs'
+  docker:
+    compose:
+      enabled: false
 springdoc:
   api-docs:
     enabled: false
